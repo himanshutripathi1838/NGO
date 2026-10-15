@@ -5,3 +5,4 @@ backups/
 site.tar.gz
 preview.png
 node_modules/
+.vercel/
