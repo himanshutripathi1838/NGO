@@ -2,6 +2,7 @@ services:
   - type: web
     name: agridoot
     runtime: node
+    plan: free
     buildCommand: npm ci
     startCommand: npm run start:cloud
     healthCheckPath: /api/status
