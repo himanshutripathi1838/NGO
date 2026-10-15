@@ -21,3 +21,17 @@ test('Vercel Turso handler supports setup, login and hierarchy',async()=>{
  cookie='';csrf='';assert.equal((await call('login','POST',{phone:'9222222222',password:'123456'})).status,200);
  cookie=otherCookie;csrf=otherCsrf;assert.equal((await call('state')).nodes.length,2);
 });
+
+test('standalone cloud server serves the site and API',async()=>{
+ const dir=mkdtempSync(join(tmpdir(),'agridoot-cloud-server-'));
+ process.env.TURSO_DATABASE_URL='file:'+join(dir,'render-test.sqlite').replaceAll('\\','/');
+ delete process.env.TURSO_AUTH_TOKEN;
+ const {createAppServer}=await import('../cloud-server.mjs?test='+Date.now());
+ const server=createAppServer();
+ await new Promise((resolve,reject)=>server.listen(0,'127.0.0.1',resolve).once('error',reject));
+ try{
+  const base='http://127.0.0.1:'+server.address().port;
+  const home=await fetch(base+'/');assert.equal(home.status,200);assert.match(await home.text(),/Agridoot/i);
+  const status=await fetch(base+'/api/status');assert.equal(status.status,200);assert.equal((await status.json()).setupRequired,true);
+ }finally{await new Promise(resolve=>server.close(resolve))}
+});

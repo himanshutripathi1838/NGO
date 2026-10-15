@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: agridoot
+    runtime: node
+    buildCommand: npm ci
+    startCommand: npm run start:cloud
+    healthCheckPath: /api/status
+    autoDeployTrigger: commit
+    envVars:
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false

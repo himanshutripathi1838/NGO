@@ -15,3 +15,10 @@ After deployment, sign in using an existing mobile number and password from the
 uploaded database. Existing local sessions were intentionally removed, so every
 account must sign in again. Pending accounts need a newly issued activation link
 from their direct parent administrator.
+
+## Render alternative
+
+The repository also includes `render.yaml` and `cloud-server.mjs`. On Render,
+create a Blueprint from this repository, enter `TURSO_DATABASE_URL` and
+`TURSO_AUTH_TOKEN`, then deploy. The Node web service serves both the site and
+the Turso-backed API from one process.
