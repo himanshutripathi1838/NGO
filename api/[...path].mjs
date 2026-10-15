@@ -4,7 +4,13 @@ import {promisify} from 'node:util';
 
 const derive=promisify(scrypt),roles=['Agridoot','NGO','FPO','CRP','Farmer'];
 const strongScrypt={N:131072,r:8,p:1,maxmem:256*1024*1024};
-const db=createClient({url:process.env.TURSO_DATABASE_URL||'',authToken:process.env.TURSO_AUTH_TOKEN});
+let db;
+function database(){
+ const url=process.env.TURSO_DATABASE_URL,authToken=process.env.TURSO_AUTH_TOKEN;
+ if(!url||(!url.startsWith('libsql://')&&!url.startsWith('file:')))fail(503,'Database configuration is missing or invalid.');
+ if(url.startsWith('libsql://')&&!authToken)fail(503,'Database authentication is missing.');
+ return db??=createClient({url,authToken});
+}
 const token=()=>randomBytes(32).toString('base64url'),digest=s=>createHash('sha256').update(s).digest('hex');
 const fail=(status,message)=>{throw Object.assign(new Error(message),{status})};
 function text(v,label,min=1,max=100){if(typeof v!=='string'||v.trim().length<min||v.trim().length>max)fail(400,`${label}: ${min}–${max} characters required.`);return v.trim()}
@@ -13,11 +19,11 @@ function amount(v,label,nullable=false){if(nullable&&(v===''||v==null))return nu
 async function hashPassword(p){if(typeof p!=='string'||p.length<6||p.length>128)fail(400,'Use a password of 6–128 characters.');let salt=randomBytes(16).toString('hex');return `s2$${salt}$${(await derive(p,salt,64,strongScrypt)).toString('hex')}`}
 async function verify(p,h){if(typeof p!=='string'||p.length>128||typeof h!=='string')return false;let strong=h.startsWith('s2$'),parts=strong?h.split('$'):h.split(':'),salt=strong?parts[1]:parts[0],encoded=strong?parts[2]:parts[1];if(!salt||!/^[0-9a-f]{128}$/i.test(encoded||''))return false;let key=await derive(p,salt,64,strong?strongScrypt:{N:16384,r:8,p:1});return timingSafeEqual(key,Buffer.from(encoded,'hex'))}
 const rows=r=>r.rows.map(x=>Object.fromEntries(Object.entries(x).map(([k,v])=>[k,typeof v==='bigint'?Number(v):v])));
-async function q(sql,...args){return rows(await db.execute({sql,args}))[0]}
-async function all(sql,...args){return rows(await db.execute({sql,args}))}
-async function run(sql,...args){let r=await db.execute({sql,args});return{changes:Number(r.rowsAffected)}}
+async function q(sql,...args){return rows(await database().execute({sql,args}))[0]}
+async function all(sql,...args){return rows(await database().execute({sql,args}))}
+async function run(sql,...args){let r=await database().execute({sql,args});return{changes:Number(r.rowsAffected)}}
 let initialized;
-function init(){return initialized??=(async()=>{await db.batch([
+function init(){return initialized??=(async()=>{await database().batch([
  'CREATE TABLE IF NOT EXISTS accounts(id TEXT PRIMARY KEY,parent_id TEXT REFERENCES accounts(id),role INTEGER NOT NULL CHECK(role BETWEEN 0 AND 4),name TEXT NOT NULL,phone TEXT NOT NULL UNIQUE,code TEXT NOT NULL UNIQUE,password_hash TEXT,active INTEGER NOT NULL DEFAULT 1 CHECK(active IN(0,1)),version INTEGER NOT NULL DEFAULT 1,created_at INTEGER NOT NULL)',
  'CREATE UNIQUE INDEX IF NOT EXISTS one_root ON accounts(role) WHERE role=0','CREATE INDEX IF NOT EXISTS account_parent ON accounts(parent_id)',
  'CREATE TABLE IF NOT EXISTS sessions(hash TEXT PRIMARY KEY,account_id TEXT NOT NULL REFERENCES accounts(id),csrf TEXT NOT NULL,expires INTEGER NOT NULL)','CREATE INDEX IF NOT EXISTS session_account ON sessions(account_id)',
