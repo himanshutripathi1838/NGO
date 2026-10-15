@@ -1,0 +1,7 @@
+data/
+backups/
+*.sqlite*
+.env
+site.tar.gz
+preview.png
+node_modules/
