@@ -18,7 +18,7 @@ test('Vercel Turso handler supports setup, login and hierarchy',async()=>{
  let otherCookie=cookie,otherCsrf=csrf;cookie='';csrf='';
  let activated=await call('activate','POST',{token:ngo.activationToken,password:'123456'});assert.equal(activated.status,200);assert.equal(activated.user.role,1);
  assert.equal((await call('state')).nodes.length,1);
- cookie='';csrf='';assert.equal((await call('login','POST',{phone:'9222222222',password:'123456'})).status,200);
+ cookie='';csrf='';assert.equal((await call('login','POST',{login:ngo.member.code.toLowerCase(),password:'123456'})).status,200);
  cookie=otherCookie;csrf=otherCsrf;assert.equal((await call('state')).nodes.length,2);
 });
 
