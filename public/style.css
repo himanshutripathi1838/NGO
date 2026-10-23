@@ -540,9 +540,13 @@ input[readonly] {
   justify-content: center;
   padding: 40px clamp(24px, 5vw, 68px);
   background: radial-gradient(circle at 100% 0%, #e2f1db 0%, transparent 35%), #f6faf4;
+  perspective: 1400px;
+  perspective-origin: center center;
+  overflow: hidden;
 }
 
-.auth-form > div {
+.auth-form > div,
+.auth-card {
   width: 100%;
   max-width: 480px;
   padding: 38px 42px;
@@ -550,6 +554,78 @@ input[readonly] {
   border: 1px solid #dfe9df;
   border-radius: var(--radius-lg);
   box-shadow: 0 20px 50px rgba(3, 44, 27, 0.1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* 3D Screen/Card Flip Transitions */
+.flip-out-left {
+  animation: flipCardOutLeft 0.28s cubic-bezier(0.4, 0, 0.7, 1) forwards !important;
+}
+
+.flip-in-right {
+  animation: flipCardInRight 0.36s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.flip-out-right {
+  animation: flipCardOutRight 0.28s cubic-bezier(0.4, 0, 0.7, 1) forwards !important;
+}
+
+.flip-in-left {
+  animation: flipCardInLeft 0.36s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@keyframes flipCardOutLeft {
+  0% {
+    transform: perspective(1200px) rotateY(0deg) scale(1);
+    opacity: 1;
+    box-shadow: 0 20px 50px rgba(3, 44, 27, 0.1);
+  }
+  100% {
+    transform: perspective(1200px) rotateY(-90deg) scale(0.92);
+    opacity: 0.1;
+    box-shadow: 0 5px 15px rgba(3, 44, 27, 0.03);
+  }
+}
+
+@keyframes flipCardInRight {
+  0% {
+    transform: perspective(1200px) rotateY(90deg) scale(0.92);
+    opacity: 0.1;
+    box-shadow: 0 5px 15px rgba(3, 44, 27, 0.03);
+  }
+  100% {
+    transform: perspective(1200px) rotateY(0deg) scale(1);
+    opacity: 1;
+    box-shadow: 0 20px 50px rgba(3, 44, 27, 0.1);
+  }
+}
+
+@keyframes flipCardOutRight {
+  0% {
+    transform: perspective(1200px) rotateY(0deg) scale(1);
+    opacity: 1;
+    box-shadow: 0 20px 50px rgba(3, 44, 27, 0.1);
+  }
+  100% {
+    transform: perspective(1200px) rotateY(90deg) scale(0.92);
+    opacity: 0.1;
+    box-shadow: 0 5px 15px rgba(3, 44, 27, 0.03);
+  }
+}
+
+@keyframes flipCardInLeft {
+  0% {
+    transform: perspective(1200px) rotateY(-90deg) scale(0.92);
+    opacity: 0.1;
+    box-shadow: 0 5px 15px rgba(3, 44, 27, 0.03);
+  }
+  100% {
+    transform: perspective(1200px) rotateY(0deg) scale(1);
+    opacity: 1;
+    box-shadow: 0 20px 50px rgba(3, 44, 27, 0.1);
+  }
 }
 
 .auth-form .eyebrow {
