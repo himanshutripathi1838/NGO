@@ -2208,6 +2208,67 @@ dialog .actions {
   color: var(--green);
 }
 
+/* Invitation Dialog & Individual Copy Fields */
+.invitation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.copy-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.copy-input-row input {
+  margin-top: 0 !important;
+  flex: 1;
+  min-width: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13.5px;
+  background: #f8faf8;
+  border: 1.5px dashed #b9d8c2;
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+.copy-field-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--mint);
+  color: var(--green);
+  border: 1.5px solid rgba(7, 116, 67, 0.25);
+  box-shadow: 0 2px 6px rgba(7, 116, 67, 0.08);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.copy-field-btn:hover {
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(7, 116, 67, 0.25);
+}
+
+.copy-field-btn:active {
+  transform: translateY(0);
+}
+
 /* ==========================================================================
    PROFILE & REPORT PAGES
    ========================================================================== */
@@ -3114,6 +3175,13 @@ dialog .actions {
   }
   .form-grid {
     grid-template-columns: 1fr;
+  }
+  .copy-input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .copy-field-btn {
+    width: 100%;
   }
 }
 
