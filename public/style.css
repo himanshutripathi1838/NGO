@@ -4331,3 +4331,54 @@ dialog .actions {
 @media (prefers-reduced-motion: reduce) {
   .report-table-card tbody tr { transition: none; }
 }
+
+/* Neutral startup screen: never reveal dashboard-like placeholders before login. */
+.startup-loader {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 15% 12%, rgba(185, 236, 74, 0.22), transparent 25%),
+    radial-gradient(circle at 88% 86%, rgba(28, 166, 97, 0.15), transparent 29%),
+    linear-gradient(135deg, #f8fcf8 0%, #edf7ef 100%);
+}
+
+.startup-loader-card {
+  display: grid;
+  min-width: min(100%, 280px);
+  justify-items: center;
+  gap: 18px;
+  padding: 32px 40px 28px;
+  border: 1px solid rgba(7, 116, 67, 0.15);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 48px rgba(3, 57, 31, 0.12);
+}
+
+.startup-loader-card .brand-lockup {
+  color: #063b23;
+  font-size: 18px;
+}
+
+.startup-loader-spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid #d9eddf;
+  border-top-color: #07864b;
+  border-radius: 50%;
+  animation: startupSpin 700ms linear infinite;
+}
+
+.startup-loader-card p {
+  margin: 0;
+  color: #547361;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@keyframes startupSpin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .startup-loader-spinner { animation: none; border-top-color: #07864b; }
+}
