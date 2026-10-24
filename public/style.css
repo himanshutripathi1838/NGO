@@ -4382,3 +4382,88 @@ dialog .actions {
 @media (prefers-reduced-motion: reduce) {
   .startup-loader-spinner { animation: none; border-top-color: #07864b; }
 }
+
+/* Sidebar: calmer forest-green navigation with clear active and account states. */
+.sidebar {
+  background:
+    radial-gradient(circle at 108% 3%, rgba(185, 236, 74, 0.16), transparent 24%),
+    radial-gradient(circle at -12% 78%, rgba(27, 152, 92, 0.18), transparent 30%),
+    linear-gradient(180deg, #052b1a 0%, #03351f 48%, #022719 100%) !important;
+  border-right-color: rgba(205, 246, 216, 0.13);
+  box-shadow: 8px 0 30px rgba(2, 31, 19, 0.18);
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0a9c58, #b9ec4a);
+}
+
+.sidebar .brand-lockup {
+  border: 1px solid rgba(185, 236, 74, 0.3);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+}
+
+.role-stamp {
+  border-color: rgba(185, 236, 74, 0.42);
+  background: rgba(185, 236, 74, 0.13);
+  color: #d4f78a;
+}
+
+.workspace {
+  border-color: rgba(191, 235, 202, 0.18);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.095), rgba(185, 236, 74, 0.055));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 7px 18px rgba(0, 0, 0, 0.11);
+}
+
+.nav button {
+  margin: 2px 0;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: #d8eadf;
+}
+
+.nav button:hover {
+  border-color: rgba(209, 246, 219, 0.13);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.nav button.active {
+  border-color: rgba(255, 255, 255, 0.68);
+  background: linear-gradient(135deg, #ffffff, #e7f7eb) !important;
+  color: #06472a !important;
+  box-shadow: 0 10px 22px rgba(1, 23, 13, 0.28);
+}
+
+.nav button.active svg { color: #07904f; }
+
+.network-note {
+  padding: 13px 15px;
+  border-color: rgba(191, 235, 202, 0.2);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(185, 236, 74, 0.085));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.network-note strong {
+  margin: 0;
+  color: #d2f878;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.sidebar-bottom .user {
+  border-top-color: rgba(214, 247, 223, 0.13);
+  padding-top: 16px;
+}
+
+.user small { color: #acd2b9; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav button:hover { transform: none; }
+}
