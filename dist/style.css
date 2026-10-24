@@ -1901,222 +1901,113 @@ input[readonly] {
 }
 
 /* ==========================================================================
-   METRIC STAT CARDS (4 PILLARS) - MODERN ILLUSTRATED DESIGN (NO NUMBERS)
+   METRIC STAT CARDS (4 PILLARS)
    ========================================================================== */
 
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  gap: 20px;
   margin-bottom: 28px;
 }
 
 .stat {
   position: relative;
   overflow: hidden;
-  border-radius: 24px;
-  padding: 20px 20px 0 20px;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  box-shadow: 0 10px 25px -4px rgba(7, 116, 67, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+  background: #ffffff;
+  border: 1px solid #dce8dd;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(2, 36, 22, 0.05);
   transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease;
-  cursor: pointer;
-  user-select: none;
-  z-index: 1;
 }
 
-/* Card 1 Theme - Soft Green */
-.stat-1 {
-  background: linear-gradient(180deg, #ffffff 0%, #f3fcf6 60%, #e6f7ec 100%);
-  border: 1px solid #d4ecd9;
-}
-.stat-1 .stat-icon-box {
-  background: #dcfce7 !important;
-  color: #16a34a !important;
-}
-.stat-1 .stat-corner-leaf {
-  color: #86efac;
-}
-.stat-1 .stat-arrow-btn {
-  background: #dcfce7;
-  color: #15803d;
-  border: 1px solid #bbf7d0;
-}
-
-/* Card 2 Theme - Light Lime Green */
-.stat-2 {
-  background: linear-gradient(180deg, #ffffff 0%, #f9fdf2 60%, #eef8db 100%);
-  border: 1px solid #e1f0c5;
-}
-.stat-2 .stat-icon-box {
-  background: #ecfccb !important;
-  color: #65a30d !important;
-}
-.stat-2 .stat-corner-leaf {
-  color: #bef264;
-}
-.stat-2 .stat-arrow-btn {
-  background: #ecfccb;
-  color: #4d7c0f;
-  border: 1px solid #d9f99d;
-}
-
-/* Card 3 Theme - Soft Orange */
-.stat-3 {
-  background: linear-gradient(180deg, #ffffff 0%, #fffaf3 60%, #ffeed7 100%);
-  border: 1px solid #fde4ca;
-}
-.stat-3 .stat-icon-box {
-  background: #ffedd5 !important;
-  color: #ea580c !important;
-}
-.stat-3 .stat-corner-leaf {
-  color: #fed7aa;
-}
-.stat-3 .stat-arrow-btn {
-  background: #ffedd5;
-  color: #c2410c;
-  border: 1px solid #fed7aa;
-}
-
-/* Card 4 Theme - Light Blue */
-.stat-4 {
-  background: linear-gradient(180deg, #ffffff 0%, #f3faff 60%, #e2f2fd 100%);
-  border: 1px solid #cbe6fa;
-}
-.stat-4 .stat-icon-box {
-  background: #e0f2fe !important;
-  color: #0284c7 !important;
-}
-.stat-4 .stat-corner-leaf {
-  color: #bae6fd;
-}
-.stat-4 .stat-arrow-btn {
-  background: #e0f2fe;
-  color: #0284c7;
-  border: 1px solid #bae6fd;
-}
-
-/* Smooth Hover Animations */
-.stat:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px -4px rgba(7, 116, 67, 0.1), 0 4px 12px rgba(0, 0, 0, 0.04);
-}
-.stat-1:hover { border-color: #86efac; }
-.stat-2:hover { border-color: #bef264; }
-.stat-3:hover { border-color: #fed7aa; }
-.stat-4:hover { border-color: #bae6fd; }
-
-.stat:hover .stat-arrow-btn {
-  transform: translateX(3px) scale(1.06);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-}
-
-.stat:hover .stat-icon-box {
-  transform: scale(1.05);
-}
-
-/* Top header row with icon, title and circular arrow */
-.stat-top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  position: relative;
-  z-index: 2;
-}
-
-.stat-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-
-.stat-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease;
-}
-
-.stat-icon-box svg {
-  width: 22px;
-  height: 22px;
-}
-
-.stat-header-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.stat-category {
-  font-size: 13.5px;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: #0f172a;
-  line-height: 1.2;
-  margin: 0;
-}
-
-.stat-subtitle {
-  font-size: 11.5px;
-  font-weight: 500;
-  color: #64748b;
-  line-height: 1.35;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Circular Right-Arrow Button */
-.stat-arrow-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
-}
-
-.stat-arrow-btn svg {
-  width: 15px;
-  height: 15px;
-}
-
-/* Top-right corner delicate leaf decoration */
-.stat-corner-leaf {
+.stat::before {
+  content: '';
   position: absolute;
-  top: 8px;
-  right: 52px;
-  width: 36px;
-  height: 36px;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.85;
-}
-
-/* Bottom artwork illustration pinned to card bottom */
-.stat-art {
-  position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  height: 85px;
-  pointer-events: none;
-  z-index: 1;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green), var(--lime));
+  opacity: 0.9;
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -5px rgba(2, 38, 24, 0.09), 0 2px 8px rgba(2, 38, 24, 0.04);
+  border-color: #badfc0;
+}
+
+/* Card-Specific Accents */
+.stat-1 .icon-box {
+  background: #e8f5ec !important;
+  color: #077443 !important;
+}
+
+.stat-2 .icon-box {
+  background: #f2fadc !important;
+  color: #4d7a18 !important;
+}
+
+.stat-3 .icon-box {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+}
+
+.stat-4 .icon-box {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+}
+
+.stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #62776c;
+}
+
+.icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.icon-box svg {
+  width: 20px;
+  height: 20px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin: 14px 0 6px;
+  color: #0d281c;
+  overflow-wrap: anywhere;
+}
+
+.stat strong small {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0;
+  margin-left: 4px;
+}
+
+.stat small {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+  display: block;
 }
 
 /* ==========================================================================
@@ -3437,12 +3328,14 @@ dialog .actions {
     display: none;
   }
   .stats {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
   .stat {
-    min-height: 165px;
-    padding: 18px 18px 0 18px;
+    padding: 16px;
+  }
+  .stat strong {
+    font-size: 24px;
   }
   .filters {
     flex-direction: column;
@@ -3688,8 +3581,7 @@ dialog .actions {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-height: 180px;
-  border-radius: 24px;
+  min-height: 140px;
 }
 
 .skeleton-stat-top {
