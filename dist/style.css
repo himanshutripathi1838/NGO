@@ -4073,3 +4073,128 @@ dialog .actions {
   .stat, .stat .icon-box { transition: none; }
   .stat:hover, .stat:hover .icon-box { transform: none; }
 }
+
+/* Reports: quick-reading metrics with the same polished Agridoot visual language. */
+.report-metrics {
+  gap: 16px;
+  margin: 26px 0 32px;
+}
+
+.report-metrics article {
+  --metric-accent: #07864b;
+  --metric-soft: #e7f7ec;
+  position: relative;
+  isolation: isolate;
+  min-height: 164px;
+  overflow: hidden;
+  padding: 21px 21px 19px;
+  border: 1px solid rgba(9, 107, 61, 0.16);
+  border-left: 0;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fff 0%, #fff 62%, var(--metric-soft) 180%);
+  box-shadow: 0 9px 23px rgba(2, 43, 25, 0.055);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.report-metrics article::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, var(--metric-accent), #b9ec4a);
+}
+
+.report-metrics article::after {
+  position: absolute;
+  right: 17px;
+  top: 15px;
+  z-index: 0;
+  display: grid;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  background: var(--metric-soft);
+  color: var(--metric-accent);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 14px rgba(3, 77, 42, 0.08);
+}
+
+.report-metrics article > * {
+  position: relative;
+  z-index: 1;
+}
+
+.report-metrics article:nth-child(1) { --metric-accent: #07864b; --metric-soft: #e7f7ec; }
+.report-metrics article:nth-child(1)::after { content: 'F'; }
+.report-metrics article:nth-child(2) { --metric-accent: #759d1d; --metric-soft: #f1f9dc; }
+.report-metrics article:nth-child(2)::after { content: 'A'; }
+.report-metrics article:nth-child(3) { --metric-accent: #be6800; --metric-soft: #fff2d0; }
+.report-metrics article:nth-child(3)::after { content: '₹'; font-size: 15px; }
+.report-metrics article:nth-child(4) { --metric-accent: #0878b2; --metric-soft: #e2f3ff; }
+.report-metrics article:nth-child(4)::after { content: 'Q'; }
+
+.report-metrics article:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--metric-accent) 32%, #dce8dd);
+  box-shadow: 0 17px 32px rgba(2, 56, 31, 0.11);
+}
+
+.report-metrics small {
+  display: block;
+  max-width: calc(100% - 46px);
+  color: #4a6658;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.78px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.report-metrics strong {
+  margin: 23px 0 8px;
+  color: #062a19;
+  font-size: clamp(27px, 2.25vw, 35px);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -1.65px;
+  font-variant-numeric: tabular-nums;
+}
+
+.report-metrics strong i {
+  color: var(--metric-accent);
+  font-size: 14px;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.report-metrics span {
+  display: block;
+  max-width: 200px;
+  color: #647a6b;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.report-metrics span:empty { display: none; }
+
+@media (max-width: 560px) {
+  .report-metrics { gap: 11px; margin: 20px 0 25px; }
+  .report-metrics article { min-height: 143px; padding: 16px 15px; border-radius: 15px; }
+  .report-metrics article::before { width: 4px; }
+  .report-metrics article::after { right: 13px; top: 12px; width: 29px; height: 29px; border-radius: 10px; font-size: 9px; }
+  .report-metrics article:nth-child(3)::after { font-size: 13px; }
+  .report-metrics small { font-size: 8.5px; letter-spacing: 0.58px; }
+  .report-metrics strong { margin: 20px 0 6px; font-size: clamp(24px, 7vw, 31px); }
+  .report-metrics strong i { display: block; margin-top: 4px; font-size: 11px; }
+  .report-metrics span { font-size: 10px; line-height: 1.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .report-metrics article { transition: none; }
+  .report-metrics article:hover { transform: none; }
+}
