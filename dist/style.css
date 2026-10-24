@@ -3887,6 +3887,54 @@ dialog .actions {
   }
 }
 
+/* Branded sign-in card header */
+.auth-card {
+  padding: 150px 40px 34px;
+  max-width: 474px;
+  background: linear-gradient(145deg, #ffffff, #f7fcf8 74%, #edf8ef);
+}
+
+.auth-card::before {
+  height: 126px;
+  background: radial-gradient(circle at 88% 20%, rgba(180, 234, 71, 0.36), transparent 27%), radial-gradient(circle at 78% 110%, rgba(16, 185, 129, 0.28), transparent 43%), linear-gradient(135deg, #043e25 0%, #087a45 58%, #12945a 100%);
+  border-radius: 29px 29px 48px 48px;
+}
+
+.auth-card > .eyebrow {
+  position: absolute;
+  z-index: 3;
+  top: 27px;
+  left: 40px;
+  color: #edfff2;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.auth-card > .eyebrow::before { background: #b4ea47; box-shadow: 0 0 0 3px rgba(180, 234, 71, 0.2); }
+
+.auth-card > h2 {
+  position: absolute;
+  z-index: 3;
+  top: 54px;
+  left: 40px;
+  margin: 0;
+  color: #ffffff;
+  font-size: 31px;
+  letter-spacing: -1.1px;
+}
+
+.auth-form form { margin-top: 0; padding-top: 0; border-top: 0; }
+.auth-form .primary { height: 52px; border-radius: 15px; background: linear-gradient(135deg, #087b46 0%, #034c2a 100%); }
+.auth-form .farmer-register { margin-top: 12px; padding: 11px; border-radius: 15px; border-color: #b9e6c4; background: linear-gradient(135deg, #f4fcf5, #e8f8ec); }
+.auth-form .auth-help { margin: 13px 4px 0; font-size: 11.5px; }
+
+@media (max-width: 560px) {
+  .auth-card { padding: 138px 24px 28px; border-radius: 24px; }
+  .auth-card::before { height: 114px; border-radius: 23px 23px 40px 40px; }
+  .auth-card > .eyebrow { left: 24px; top: 24px; }
+  .auth-card > h2 { left: 24px; top: 51px; font-size: 28px; }
+}
+
 @media (max-width: 1020px) {
   .auth-layout { grid-template-columns: 1fr; background: #f3faf4; }
   .auth-brand { min-height: 340px; padding: 32px 28px; border-radius: 0 0 48px 48px; background-position: center 58% !important; }
