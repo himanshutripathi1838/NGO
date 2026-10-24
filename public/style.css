@@ -2411,6 +2411,39 @@ dialog .actions {
   max-height: 92dvh;
 }
 
+.crop-dialog .form-grid {
+  gap: 18px;
+}
+
+.crop-dialog label {
+  padding: 12px;
+  border: 1px solid #dfebe0;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f7fbf7);
+}
+
+.crop-dialog label:focus-within {
+  border-color: #11834a;
+  box-shadow: 0 0 0 3px rgba(17, 131, 74, 0.12);
+}
+
+.crop-dialog label input,
+.crop-dialog label select {
+  margin-top: 7px;
+  background: #ffffff;
+}
+
+.crop-dialog .crop-date-field {
+  background: linear-gradient(135deg, #eef9f0, #fbfff8);
+}
+
+.crop-dialog .crop-date-field small {
+  display: block;
+  margin-top: 6px;
+  color: #66806c;
+  font-weight: 500;
+}
+
 .measure-field {
   display: grid;
   grid-template-columns: 1fr 130px;
