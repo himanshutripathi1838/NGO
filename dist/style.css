@@ -2407,16 +2407,19 @@ dialog .actions {
 
 /* Crop Dialog & Input Rows */
 .crop-dialog {
-  width: 860px;
-  max-height: 92dvh;
+  width: min(700px, 92vw);
+  max-height: 88dvh;
+  padding: 26px;
+  overflow-y: auto;
 }
 
 .crop-dialog .form-grid {
-  gap: 18px;
+  gap: 12px;
+  margin: 18px 0;
 }
 
 .crop-dialog label {
-  padding: 12px;
+  padding: 9px 10px;
   border: 1px solid #dfebe0;
   border-radius: 12px;
   background: linear-gradient(145deg, #ffffff, #f7fbf7);
@@ -2429,7 +2432,7 @@ dialog .actions {
 
 .crop-dialog label input,
 .crop-dialog label select {
-  margin-top: 7px;
+  margin-top: 5px;
   background: #ffffff;
 }
 
@@ -2439,9 +2442,22 @@ dialog .actions {
 
 .crop-dialog .crop-date-field small {
   display: block;
-  margin-top: 6px;
+  margin-top: 4px;
   color: #66806c;
   font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .crop-dialog {
+    width: calc(100vw - 24px);
+    padding: 20px 16px;
+  }
+
+  .crop-dialog .form-grid,
+  .crop-dialog .measure-field,
+  .crop-dialog .input-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .measure-field {
