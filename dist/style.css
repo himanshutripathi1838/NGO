@@ -3064,21 +3064,56 @@ dialog .actions {
   border-radius: 18px;
   padding: 24px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.glance-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(2, 36, 22, 0.1);
+}
+
+.glance-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.glance-title h2 {
+  margin: 4px 0 0;
+  color: var(--ink);
+  font-size: 16px;
+  letter-spacing: -0.3px;
+}
+
+.glance-overline {
+  color: var(--green);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.glance-menu {
+  color: var(--muted);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.glance-donut-wrap { display: grid; place-items: center; min-height: 174px; }
+
 .glance-donut {
-  width: 146px;
-  height: 146px;
-  margin: 20px auto;
+  width: 154px;
+  height: 154px;
+  margin: 12px auto;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 20px rgba(2, 36, 22, 0.12);
 }
 
 .glance-donut > div {
-  width: 108px;
-  height: 108px;
+  width: 112px;
+  height: 112px;
   border-radius: 50%;
   display: grid;
   place-content: center;
@@ -3086,6 +3121,17 @@ dialog .actions {
   background: #ffffff;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.04);
 }
+
+.glance-donut strong { display: block; color: var(--ink); font-size: 25px; font-weight: 800; line-height: 1.1; }
+.glance-donut small { display: block; max-width: 78px; margin-top: 5px; color: var(--muted); font-size: 10px; line-height: 1.25; }
+
+.glance-legend { display: grid; gap: 8px; }
+.glance-legend > div { display: grid; grid-template-columns: 9px minmax(0,1fr) auto auto; align-items: center; column-gap: 8px; color: var(--muted); font-size: 11px; }
+.glance-legend i { width: 8px; height: 8px; border-radius: 3px; }
+.glance-legend span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.glance-legend b { color: var(--ink); font-size: 11px; font-weight: 700; }
+.glance-legend small { min-width: 27px; color: var(--muted-light); font-size: 10px; text-align: right; }
+.glance-legend p { margin: 8px 0; color: var(--muted); font-size: 12px; text-align: center; }
 
 .report-metrics {
   display: grid;
