@@ -3946,3 +3946,130 @@ dialog .actions {
   .auth-brand-content { max-width: 310px; }
   .auth-bottom { font-size: 10px; }
 }
+
+/* Dashboard summary cards: clearer hierarchy with Agridoot's field-inspired palette. */
+.stats {
+  gap: 16px;
+  margin: 4px 0 30px;
+}
+
+.stat {
+  --stat-accent: #07864b;
+  --stat-soft: #e8f7ed;
+  --stat-shadow: rgba(3, 77, 42, 0.13);
+  min-height: 202px;
+  padding: 22px 22px 20px;
+  isolation: isolate;
+  border: 1px solid rgba(9, 107, 61, 0.16);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 100% 0%, var(--stat-soft) 0, transparent 34%),
+    #ffffff;
+  box-shadow: 0 10px 25px rgba(2, 43, 25, 0.055), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.stat::before {
+  right: auto;
+  width: 76px;
+  height: 5px;
+  border-radius: 0 0 999px 0;
+  background: linear-gradient(90deg, var(--stat-accent), #b9ec4a);
+  opacity: 1;
+}
+
+.stat::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: -28px;
+  bottom: -36px;
+  width: 114px;
+  height: 114px;
+  border: 18px solid var(--stat-soft);
+  border-radius: 50%;
+  opacity: 0.72;
+}
+
+.stat > * {
+  position: relative;
+  z-index: 1;
+}
+
+.stat-1 { --stat-accent: #05864a; --stat-soft: #e7f7ec; }
+.stat-2 { --stat-accent: #6b981a; --stat-soft: #f2fadc; }
+.stat-3 { --stat-accent: #c06a04; --stat-soft: #fff4d4; }
+.stat-4 { --stat-accent: #0575ae; --stat-soft: #e5f5ff; }
+
+.stat:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--stat-accent) 35%, #dce8dd);
+  box-shadow: 0 18px 34px var(--stat-shadow), 0 3px 8px rgba(2, 38, 24, 0.045);
+}
+
+.stat-top {
+  color: #4a6658;
+  font-size: 10px;
+  letter-spacing: 0.95px;
+  line-height: 1.2;
+}
+
+.stat .icon-box {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 8px 17px rgba(7, 77, 40, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.stat:hover .icon-box {
+  transform: translateY(-2px) rotate(-3deg);
+  box-shadow: 0 11px 20px rgba(7, 77, 40, 0.14);
+}
+
+.stat strong {
+  margin: 25px 0 7px;
+  color: #062a19;
+  font-size: clamp(30px, 2.35vw, 38px);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -1.9px;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat strong small {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--stat-accent);
+  letter-spacing: 0;
+}
+
+.stat > small {
+  max-width: 205px;
+  color: #647a6b;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+@media (max-width: 1150px) {
+  .stats { gap: 14px; }
+}
+
+@media (max-width: 560px) {
+  .stats { gap: 11px; margin-bottom: 22px; }
+  .stat { min-height: 166px; padding: 16px 15px; border-radius: 16px; }
+  .stat::before { width: 54px; height: 4px; }
+  .stat::after { width: 82px; height: 82px; border-width: 13px; right: -26px; bottom: -28px; }
+  .stat .icon-box { width: 39px; height: 39px; border-radius: 12px; }
+  .stat .icon-box svg { width: 18px; height: 18px; }
+  .stat-top { font-size: 8.5px; letter-spacing: 0.65px; }
+  .stat strong { margin: 20px 0 6px; font-size: clamp(25px, 8vw, 32px); letter-spacing: -1.35px; }
+  .stat strong small { display: block; margin: 5px 0 0; font-size: 11px; }
+  .stat > small { font-size: 10px; line-height: 1.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat, .stat .icon-box { transition: none; }
+  .stat:hover, .stat:hover .icon-box { transform: none; }
+}
