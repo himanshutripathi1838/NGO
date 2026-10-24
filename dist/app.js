@@ -54,5 +54,9 @@ async function boot(){try{let status=await api('status');if(status.setupRequired
 setInterval(async()=>{if(state&&!document.hidden&&!$('#dialog').open&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName)){try{await refresh()}catch(e){let s=$('#sync');if(s)s.textContent='Connection interrupted · retrying'}}},20000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&state&&!$('#dialog').open)refresh().catch(message)});
 function syncHarvestCard(){let card=$('.stat-4');if(!card||!state)return;let s=stats(current),signature=[current,crop,season,s.output,s.harvested,s.missing].join('|');if(card.dataset.harvestSignature===signature)return;card.dataset.harvestSignature=signature;let label=card.querySelector('.stat-top'),value=card.querySelector('strong'),detail=card.querySelector('small');if(label?.firstChild)label.firstChild.nodeValue=(crop?crop+' output':'Harvest output');if(value)value.innerHTML=fmt(s.output)+' <small>qtl</small>';if(detail)detail.textContent=s.harvested?`${s.harvested} harvested record${s.harvested===1?'':'s'}${s.missing?' · '+s.missing+' awaiting harvest':''}`:'No harvest output recorded yet'}
-new MutationObserver(()=>setTimeout(syncHarvestCard,0)).observe($('#app'),{childList:true,subtree:true});boot();
+new MutationObserver(()=>setTimeout(syncHarvestCard,0)).observe($('#app'),{childList:true,subtree:true});
+// The crop CTA is rendered dynamically. Handle it at document level so it still
+// opens its form after any dashboard refresh or re-render.
+document.addEventListener('click',event=>{let button=event.target.closest('[data-action="crop"]');if(!button||!state||!current)return;event.preventDefault();event.stopImmediatePropagation();try{cropForm()}catch(error){message(error)}},true);
+boot();
 
