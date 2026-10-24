@@ -646,9 +646,28 @@ input[readonly] {
   filter: blur(45px);
 }
 
-.auth-form > div,
+/* Vertical Organic Wave Divider */
+.auth-wave-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: clamp(55px, 6.5vw, 95px);
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(4px 0 16px rgba(0, 0, 0, 0.14));
+}
+
+.auth-wave-divider svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .auth-card {
   position: relative;
+  z-index: 2;
   width: 100%;
   max-width: 490px;
   padding: 42px 46px;
@@ -778,7 +797,7 @@ input[readonly] {
   font-weight: 800;
 }
 
-.auth-form > div > p {
+.auth-card > p {
   font-size: 13.5px;
   color: #4b6455;
   line-height: 1.5;
@@ -3134,7 +3153,10 @@ dialog .actions {
   .auth-form {
     padding: 30px 18px;
   }
-  .auth-form > div {
+  .auth-wave-divider {
+    display: none;
+  }
+  .auth-card {
     padding: 30px 24px;
   }
   .glance-grid {
@@ -3186,7 +3208,6 @@ dialog .actions {
   .auth-form {
     padding: 16px clamp(20px, 4vw, 44px);
   }
-  .auth-form > div,
   .auth-card {
     max-width: 420px;
     padding: 22px 28px;
