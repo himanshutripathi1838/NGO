@@ -1901,13 +1901,13 @@ input[readonly] {
 }
 
 /* ==========================================================================
-   METRIC STAT CARDS (4 PILLARS)
+   METRIC STAT CARDS (4 PILLARS) - ILLUSTRATED DESIGN
    ========================================================================== */
 
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 18px;
   margin-bottom: 28px;
 }
 
@@ -1915,99 +1915,225 @@ input[readonly] {
   position: relative;
   overflow: hidden;
   background: #ffffff;
-  border: 1px solid #dce8dd;
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 4px 16px rgba(2, 36, 22, 0.05);
+  border: 1px solid #e1eee4;
+  border-radius: 26px;
+  padding: 22px 20px 0 22px;
+  min-height: 255px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 10px 25px -4px rgba(7, 116, 67, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
   transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease;
-}
-
-.stat::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--green), var(--lime));
-  opacity: 0.9;
+  z-index: 1;
 }
 
 .stat:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 35px -5px rgba(2, 38, 24, 0.09), 0 2px 8px rgba(2, 38, 24, 0.04);
+  box-shadow: 0 18px 36px -6px rgba(7, 116, 67, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
   border-color: #badfc0;
 }
 
-/* Card-Specific Accents */
-.stat-1 .icon-box {
-  background: #e8f5ec !important;
-  color: #077443 !important;
+/* Corner decorative foliage accent */
+.stat-corner-leaf {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 68px;
+  height: 68px;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.stat-2 .icon-box {
-  background: #f2fadc !important;
-  color: #4d7a18 !important;
-}
-
-.stat-3 .icon-box {
-  background: #fef3c7 !important;
-  color: #b45309 !important;
-}
-
-.stat-4 .icon-box {
-  background: #e0f2fe !important;
-  color: #0369a1 !important;
-}
-
-.stat-top {
+/* Top header layout */
+.stat-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #62776c;
+  gap: 13px;
+  position: relative;
+  z-index: 2;
 }
 
-.icon-box {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+.stat-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
 }
 
-.icon-box svg {
-  width: 20px;
-  height: 20px;
+.stat:hover .stat-icon-box {
+  transform: scale(1.06);
 }
 
-.stat strong {
-  display: block;
-  font-size: 34px;
+.stat-icon-box svg {
+  width: 22px;
+  height: 22px;
+}
+
+.stat-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.stat-category {
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: -1.5px;
-  margin: 14px 0 6px;
-  color: #0d281c;
-  overflow-wrap: anywhere;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #111827;
+  line-height: 1.2;
 }
 
-.stat strong small {
-  font-size: 14px;
+.stat-subtitle {
+  font-size: 11.5px;
+  color: #64748b;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Card-Specific Icon Box Colors */
+.stat-1 .stat-icon-box {
+  background: #dcfce7 !important;
+  color: #16a34a !important;
+}
+
+.stat-2 .stat-icon-box {
+  background: #ecfccb !important;
+  color: #65a30d !important;
+}
+
+.stat-3 .stat-icon-box {
+  background: #fef3c7 !important;
+  color: #d97706 !important;
+}
+
+.stat-4 .stat-icon-box {
+  background: #e0f2fe !important;
+  color: #0284c7 !important;
+}
+
+/* Value block */
+.stat-body {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-value {
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: -1.2px;
+  color: #0f172a;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.stat-val-prompt {
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.stat-unit-text {
+  font-size: 13.5px;
   font-weight: 700;
-  color: var(--muted);
-  letter-spacing: 0;
-  margin-left: 4px;
+  color: #475569;
+  letter-spacing: -0.2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
-.stat small {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.45;
-  display: block;
+/* Pill Badges */
+.stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  margin-top: 10px;
+  letter-spacing: -0.1px;
+  white-space: nowrap;
+}
+
+.stat-pill .arrow-up {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.stat-pill-green {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.stat-pill-lime {
+  background: #ecfccb;
+  color: #4d7c0f;
+}
+
+.stat-pill-amber {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.stat-pill-blue {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+/* Choose crop button in card 4 */
+.stat-choose-crop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e0f2fe;
+  color: #0284c7;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(2, 132, 199, 0.15);
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.stat-choose-crop-btn:hover {
+  background: #bae6fd;
+  color: #0369a1;
+  transform: translateX(2px);
+}
+
+.stat-choose-crop-btn .arrow {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Bottom artwork illustration pinned to card bottom */
+.stat-art {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 115px;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ==========================================================================
@@ -3328,14 +3454,15 @@ dialog .actions {
     display: none;
   }
   .stats {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   .stat {
-    padding: 16px;
+    min-height: 240px;
+    padding: 20px 20px 0 20px;
   }
-  .stat strong {
-    font-size: 24px;
+  .stat-value {
+    font-size: 32px;
   }
   .filters {
     flex-direction: column;
@@ -3581,7 +3708,8 @@ dialog .actions {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-height: 140px;
+  min-height: 255px;
+  border-radius: 26px;
 }
 
 .skeleton-stat-top {
