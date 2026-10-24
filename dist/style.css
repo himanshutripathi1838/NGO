@@ -4464,6 +4464,11 @@ dialog .actions {
 
 .user small { color: #acd2b9; }
 
+.background-sync .sidebar,
+.background-sync .main {
+  animation: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav button:hover { transform: none; }
 }
