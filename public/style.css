@@ -1536,6 +1536,8 @@ input[readonly] {
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   margin-bottom: 24px;
+  position: relative;
+  z-index: 30;
 }
 
 .filters-left {
@@ -1543,6 +1545,148 @@ input[readonly] {
   align-items: center;
   gap: 12px;
   flex-wrap: nowrap;
+}
+
+/* Custom Dropdown Component */
+.custom-select-wrap {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.custom-select-wrap.is-open {
+  z-index: 100;
+}
+
+.filter-select-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 175px;
+  height: 44px;
+  padding: 8px 14px 8px 16px;
+  background-color: #f8faf8;
+  border: 1.5px solid #d4e2d6;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+  outline: none;
+  text-align: left;
+}
+
+.filter-select-btn:hover {
+  background-color: #ffffff;
+  border-color: #077443;
+}
+
+.custom-select-wrap.is-open .filter-select-btn {
+  background-color: #ffffff;
+  border-color: #077443;
+  box-shadow: 0 0 0 3px rgba(7, 116, 67, 0.15);
+}
+
+.btn-selected-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron-icon {
+  flex-shrink: 0;
+  color: #077443;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-select-wrap.is-open .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.custom-select-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 100%;
+  width: max-content;
+  max-width: 290px;
+  max-height: 270px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1.5px solid #c2dbca;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px -4px rgba(7, 116, 67, 0.18), 0 6px 16px rgba(0, 0, 0, 0.08);
+  padding: 6px;
+  z-index: 1000;
+  list-style: none;
+}
+
+.custom-select-wrap.is-open .custom-select-menu {
+  display: block;
+  animation: dropdownPopDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dropdownPopDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.custom-select-menu::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-select-menu::-webkit-scrollbar-track {
+  background: #f4f8f5;
+  border-radius: 6px;
+}
+.custom-select-menu::-webkit-scrollbar-thumb {
+  background: #c3d9c7;
+  border-radius: 6px;
+}
+.custom-select-menu::-webkit-scrollbar-thumb:hover {
+  background: #9cbe9f;
+}
+
+.select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.12s ease, color 0.12s ease;
+  white-space: nowrap;
+}
+
+.select-option:hover {
+  background-color: #f0f7f2;
+  color: #077443;
+  font-weight: 600;
+}
+
+.select-option.selected {
+  background-color: #e6f4ea;
+  color: #055c34;
+  font-weight: 700;
+}
+
+.select-option .check-icon {
+  color: #077443;
+  font-weight: 800;
+  font-size: 13px;
+  margin-left: 12px;
 }
 
 .filters select {
@@ -1607,6 +1751,27 @@ input[readonly] {
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   margin-bottom: 24px;
+  position: relative;
+  z-index: 30;
+}
+
+.report-filterbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.report-filter-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.report-filter-lbl {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-secondary);
 }
 
 .report-filterbar > div {
@@ -3107,7 +3272,7 @@ dialog .actions {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
-  .filters select, .report-filterbar select {
+  .filters select, .report-filterbar select, .custom-select-wrap, .filter-select-btn {
     min-width: 0;
     width: 100%;
   }
@@ -3115,13 +3280,13 @@ dialog .actions {
     flex-direction: column;
     align-items: stretch;
   }
-  .report-filterbar > div {
+  .report-filterbar > div, .report-filterbar-left {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     width: 100%;
   }
-  .report-filterbar label {
+  .report-filterbar label, .report-filter-item {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
