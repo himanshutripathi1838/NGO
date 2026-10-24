@@ -1901,7 +1901,7 @@ input[readonly] {
 }
 
 /* ==========================================================================
-   METRIC STAT CARDS (4 PILLARS) - ILLUSTRATED DESIGN
+   METRIC STAT CARDS (4 PILLARS) - MODERN ILLUSTRATED DESIGN (NO NUMBERS)
    ========================================================================== */
 
 .stats {
@@ -1914,43 +1914,125 @@ input[readonly] {
 .stat {
   position: relative;
   overflow: hidden;
-  background: #ffffff;
-  border: 1px solid #e1eee4;
-  border-radius: 26px;
-  padding: 22px 20px 0 22px;
-  min-height: 255px;
+  border-radius: 24px;
+  padding: 20px 20px 0 20px;
+  min-height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  box-shadow: 0 10px 25px -4px rgba(7, 116, 67, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 10px 25px -4px rgba(7, 116, 67, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
   transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease;
+  cursor: pointer;
+  user-select: none;
   z-index: 1;
 }
 
+/* Card 1 Theme - Soft Green */
+.stat-1 {
+  background: linear-gradient(180deg, #ffffff 0%, #f3fcf6 60%, #e6f7ec 100%);
+  border: 1px solid #d4ecd9;
+}
+.stat-1 .stat-icon-box {
+  background: #dcfce7 !important;
+  color: #16a34a !important;
+}
+.stat-1 .stat-corner-leaf {
+  color: #86efac;
+}
+.stat-1 .stat-arrow-btn {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* Card 2 Theme - Light Lime Green */
+.stat-2 {
+  background: linear-gradient(180deg, #ffffff 0%, #f9fdf2 60%, #eef8db 100%);
+  border: 1px solid #e1f0c5;
+}
+.stat-2 .stat-icon-box {
+  background: #ecfccb !important;
+  color: #65a30d !important;
+}
+.stat-2 .stat-corner-leaf {
+  color: #bef264;
+}
+.stat-2 .stat-arrow-btn {
+  background: #ecfccb;
+  color: #4d7c0f;
+  border: 1px solid #d9f99d;
+}
+
+/* Card 3 Theme - Soft Orange */
+.stat-3 {
+  background: linear-gradient(180deg, #ffffff 0%, #fffaf3 60%, #ffeed7 100%);
+  border: 1px solid #fde4ca;
+}
+.stat-3 .stat-icon-box {
+  background: #ffedd5 !important;
+  color: #ea580c !important;
+}
+.stat-3 .stat-corner-leaf {
+  color: #fed7aa;
+}
+.stat-3 .stat-arrow-btn {
+  background: #ffedd5;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+
+/* Card 4 Theme - Light Blue */
+.stat-4 {
+  background: linear-gradient(180deg, #ffffff 0%, #f3faff 60%, #e2f2fd 100%);
+  border: 1px solid #cbe6fa;
+}
+.stat-4 .stat-icon-box {
+  background: #e0f2fe !important;
+  color: #0284c7 !important;
+}
+.stat-4 .stat-corner-leaf {
+  color: #bae6fd;
+}
+.stat-4 .stat-arrow-btn {
+  background: #e0f2fe;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+}
+
+/* Smooth Hover Animations */
 .stat:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 36px -6px rgba(7, 116, 67, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
-  border-color: #badfc0;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -4px rgba(7, 116, 67, 0.1), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.stat-1:hover { border-color: #86efac; }
+.stat-2:hover { border-color: #bef264; }
+.stat-3:hover { border-color: #fed7aa; }
+.stat-4:hover { border-color: #bae6fd; }
+
+.stat:hover .stat-arrow-btn {
+  transform: translateX(3px) scale(1.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-/* Corner decorative foliage accent */
-.stat-corner-leaf {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 68px;
-  height: 68px;
-  pointer-events: none;
-  z-index: 1;
+.stat:hover .stat-icon-box {
+  transform: scale(1.05);
 }
 
-/* Top header layout */
+/* Top header row with icon, title and circular arrow */
+.stat-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+
 .stat-header {
   display: flex;
   align-items: center;
-  gap: 13px;
-  position: relative;
-  z-index: 2;
+  gap: 12px;
+  min-width: 0;
 }
 
 .stat-icon-box {
@@ -1962,10 +2044,6 @@ input[readonly] {
   flex-shrink: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: transform 0.2s ease;
-}
-
-.stat:hover .stat-icon-box {
-  transform: scale(1.06);
 }
 
 .stat-icon-box svg {
@@ -1981,147 +2059,52 @@ input[readonly] {
 }
 
 .stat-category {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 800;
   letter-spacing: 0.6px;
   text-transform: uppercase;
-  color: #111827;
+  color: #0f172a;
   line-height: 1.2;
+  margin: 0;
 }
 
 .stat-subtitle {
   font-size: 11.5px;
+  font-weight: 500;
   color: #64748b;
-  line-height: 1.3;
+  line-height: 1.35;
+  margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Card-Specific Icon Box Colors */
-.stat-1 .stat-icon-box {
-  background: #dcfce7 !important;
-  color: #16a34a !important;
+/* Circular Right-Arrow Button */
+.stat-arrow-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
 }
 
-.stat-2 .stat-icon-box {
-  background: #ecfccb !important;
-  color: #65a30d !important;
+.stat-arrow-btn svg {
+  width: 15px;
+  height: 15px;
 }
 
-.stat-3 .stat-icon-box {
-  background: #fef3c7 !important;
-  color: #d97706 !important;
-}
-
-.stat-4 .stat-icon-box {
-  background: #e0f2fe !important;
-  color: #0284c7 !important;
-}
-
-/* Value block */
-.stat-body {
-  position: relative;
-  z-index: 2;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.stat-value {
-  font-size: 38px;
-  font-weight: 900;
-  letter-spacing: -1.2px;
-  color: #0f172a;
-  line-height: 1.05;
-  margin: 0;
-}
-
-.stat-val-prompt {
-  font-size: 27px;
-  font-weight: 800;
-  letter-spacing: -0.6px;
-  color: #0f172a;
-  line-height: 1.1;
-}
-
-.stat-unit-text {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #475569;
-  letter-spacing: -0.2px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
-/* Pill Badges */
-.stat-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  margin-top: 10px;
-  letter-spacing: -0.1px;
-  white-space: nowrap;
-}
-
-.stat-pill .arrow-up {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 900;
-}
-
-.stat-pill-green {
-  background: #dcfce7;
-  color: #15803d;
-}
-
-.stat-pill-lime {
-  background: #ecfccb;
-  color: #4d7c0f;
-}
-
-.stat-pill-amber {
-  background: #fef3c7;
-  color: #b45309;
-}
-
-.stat-pill-blue {
-  background: #e0f2fe;
-  color: #0284c7;
-}
-
-/* Choose crop button in card 4 */
-.stat-choose-crop-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #e0f2fe;
-  color: #0284c7;
-  font-size: 12.5px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  border: 1px solid rgba(2, 132, 199, 0.15);
-  margin-top: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.stat-choose-crop-btn:hover {
-  background: #bae6fd;
-  color: #0369a1;
-  transform: translateX(2px);
-}
-
-.stat-choose-crop-btn .arrow {
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1;
+/* Top-right corner delicate leaf decoration */
+.stat-corner-leaf {
+  position: absolute;
+  top: 8px;
+  right: 52px;
+  width: 36px;
+  height: 36px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
 }
 
 /* Bottom artwork illustration pinned to card bottom */
@@ -2131,7 +2114,7 @@ input[readonly] {
   left: 0;
   right: 0;
   width: 100%;
-  height: 115px;
+  height: 85px;
   pointer-events: none;
   z-index: 1;
 }
@@ -3455,14 +3438,11 @@ dialog .actions {
   }
   .stats {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 14px;
   }
   .stat {
-    min-height: 240px;
-    padding: 20px 20px 0 20px;
-  }
-  .stat-value {
-    font-size: 32px;
+    min-height: 165px;
+    padding: 18px 18px 0 18px;
   }
   .filters {
     flex-direction: column;
@@ -3708,8 +3688,8 @@ dialog .actions {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-height: 255px;
-  border-radius: 26px;
+  min-height: 180px;
+  border-radius: 24px;
 }
 
 .skeleton-stat-top {
