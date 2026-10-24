@@ -720,6 +720,59 @@ input[readonly] {
   display: none;
 }
 
+/* A quiet carved edge replaces the old decorative wave. */
+@media (min-width: 1021px) {
+  .auth-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(460px, 1.08fr);
+    background: #f3faf4;
+  }
+
+  .auth-brand {
+    margin-right: -34px;
+    border-radius: 0 76px 76px 0;
+    box-shadow: 20px 0 44px rgba(2, 38, 25, 0.15);
+    z-index: 2;
+  }
+
+  .auth-form {
+    padding-left: clamp(58px, 7vw, 104px);
+  }
+}
+
+@media (max-width: 1020px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+    background: #f3faf4;
+  }
+
+  .auth-brand {
+    min-height: 340px;
+    padding: 32px 28px;
+    border-radius: 0 0 48px 48px;
+    background-position: center 58% !important;
+  }
+
+  .auth-form {
+    padding: 28px 20px 36px;
+  }
+}
+
+@media (max-width: 560px) {
+  .auth-brand {
+    min-height: 285px;
+    padding: 24px 20px;
+    border-radius: 0 0 34px 34px;
+  }
+
+  .auth-brand-content {
+    max-width: 310px;
+  }
+
+  .auth-bottom {
+    font-size: 10px;
+  }
+}
+
 .auth-wave-divider svg {
   width: 100%;
   height: 100%;
@@ -3813,4 +3866,16 @@ dialog .actions {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+@media (max-width: 1020px) {
+  .auth-layout { grid-template-columns: 1fr; background: #f3faf4; }
+  .auth-brand { min-height: 340px; padding: 32px 28px; border-radius: 0 0 48px 48px; background-position: center 58% !important; }
+  .auth-form { padding: 28px 20px 36px; }
+}
+
+@media (max-width: 560px) {
+  .auth-brand { min-height: 285px; padding: 24px 20px; border-radius: 0 0 34px 34px; }
+  .auth-brand-content { max-width: 310px; }
+  .auth-bottom { font-size: 10px; }
 }
