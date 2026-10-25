@@ -4472,3 +4472,182 @@ dialog .actions {
 @media (prefers-reduced-motion: reduce) {
   .nav button:hover { transform: none; }
 }
+
+/* Overview workspace: one visual system for Agridoot, NGO, FPO, CRP and Farmer dashboards. */
+.role-intro {
+  position: relative;
+  margin: 4px 0 22px;
+  padding: 4px 2px;
+}
+
+.role-intro h1 {
+  max-width: 760px;
+  font-size: clamp(30px, 3vw, 42px);
+  letter-spacing: -1.65px;
+  line-height: 1.08;
+}
+
+.role-intro p { max-width: 660px; line-height: 1.6; }
+
+.role-intro .primary {
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(3, 99, 55, 0.18);
+}
+
+.role-hero {
+  min-height: 180px;
+  padding: 31px 34px;
+  isolation: isolate;
+  border: 1px solid rgba(185, 236, 74, 0.34);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(185, 236, 74, 0.38), transparent 22%),
+    radial-gradient(circle at 70% 115%, rgba(37, 205, 132, 0.23), transparent 35%),
+    linear-gradient(128deg, #063b24 0%, #075a35 54%, #063c25 100%);
+  box-shadow: 0 18px 32px rgba(2, 61, 35, 0.16);
+}
+
+.role-hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -76px;
+  right: 18%;
+  width: 225px;
+  height: 225px;
+  border: 1px solid rgba(222, 255, 184, 0.16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(222, 255, 184, 0.045), 0 0 0 57px rgba(222, 255, 184, 0.035);
+}
+
+.role-hero small {
+  padding: 6px 10px;
+  border: 1px solid rgba(219, 255, 183, 0.27);
+  border-radius: 999px;
+  background: rgba(2, 40, 22, 0.18);
+  color: #d8fa96;
+}
+
+.role-hero h2 {
+  max-width: 620px;
+  color: #ffffff;
+  font-size: clamp(23px, 2.3vw, 31px);
+  line-height: 1.16;
+  letter-spacing: -0.8px;
+}
+
+.role-hero p { max-width: 590px; color: #d6eadc; font-size: 13.5px; }
+
+.role-hero .role-visual { z-index: 1; width: 235px; }
+.role-hero .role-visual i:nth-child(1) { background: #c9f06f; opacity: 0.15; }
+.role-hero .role-visual i:nth-child(2) { background: #b8eb61; opacity: 0.8; box-shadow: 0 13px 28px rgba(0, 25, 13, 0.25); }
+.role-hero .role-visual i:nth-child(3) { background: #ffffff; box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.16); }
+
+.network-counts {
+  gap: 11px;
+  margin: 0 0 20px;
+}
+
+.network-counts span {
+  min-height: 38px;
+  padding: 9px 14px;
+  border-color: #d5e8d8;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff, #f3faf4);
+  color: #597163;
+  box-shadow: 0 5px 13px rgba(2, 53, 29, 0.045);
+}
+
+.network-counts span:last-child {
+  border-color: #f2df9b;
+  background: linear-gradient(135deg, #fffdf4, #fff8dc);
+  color: #806718;
+}
+
+.network-counts strong {
+  display: inline-grid;
+  min-width: 23px;
+  min-height: 23px;
+  place-items: center;
+  border-radius: 7px;
+  background: #e4f5e7;
+  color: #087342;
+  font-size: 12px;
+}
+
+.filters {
+  min-height: 70px;
+  padding: 13px 16px;
+  border-color: #d5e8d8;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ffffff 0%, #f3faf4 100%);
+  box-shadow: 0 9px 20px rgba(2, 53, 29, 0.055);
+}
+
+.filters-left::before {
+  content: 'FILTER LIVE DATA';
+  padding-right: 12px;
+  border-right: 1px solid #dcebe0;
+  color: #567060;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.75px;
+  white-space: nowrap;
+}
+
+.scope-label {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #e9f6eb;
+  color: #287048;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.charts { gap: 18px; margin: 0 0 24px; }
+
+.charts .panel {
+  border-color: #d9e9dc;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(2, 53, 29, 0.055);
+}
+
+.charts .panel-head { padding-bottom: 15px; }
+.charts .panel-head h2, .charts .panel > h2 { color: #073a23; }
+.charts .panel > h2 { margin-bottom: 4px; }
+.charts .tabs { background: #edf7ef; border: 1px solid #dcece0; }
+.charts .tabs button { border-radius: 9px; }
+.charts .chart-foot {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f2f9f3;
+  color: #51705d;
+}
+
+.records-panel {
+  padding: 25px;
+  border-color: #d8e9db;
+  border-radius: 21px;
+  background: linear-gradient(180deg, #ffffff, #fcfefc);
+  box-shadow: 0 12px 28px rgba(2, 53, 29, 0.055);
+}
+
+.records-panel .table-head {
+  margin-bottom: 18px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #e3eee5;
+}
+
+.records-panel .table-head h2 { color: #073a23; font-size: 20px; }
+.records-panel .search { min-height: 43px; border-radius: 12px; background: #f8fcf8; }
+.records-panel .table-wrap { border-color: #dceadf; box-shadow: none; }
+
+@media (max-width: 700px) {
+  .role-intro { margin-top: 0; }
+  .role-hero { min-height: 165px; padding: 24px 21px; border-radius: 18px; }
+  .filters-left::before { display: none; }
+  .scope-label { align-self: flex-start; }
+  .records-panel { padding: 18px 14px; border-radius: 18px; }
+}
