@@ -4626,6 +4626,16 @@ dialog .actions {
   color: #51705d;
 }
 
+.farmer-chart-bar {
+  display: block;
+  cursor: default;
+}
+
+.farmer-chart-bar:hover {
+  filter: none;
+  transform: none;
+}
+
 .records-panel {
   padding: 25px;
   border-color: #d8e9db;
