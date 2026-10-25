@@ -4661,3 +4661,106 @@ dialog .actions {
   .scope-label { align-self: flex-start; }
   .records-panel { padding: 18px 14px; border-radius: 18px; }
 }
+
+/* Crop diary and network records: shared, readable data-table treatment. */
+.records-panel .table-wrap {
+  overflow: auto;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.records-panel table { min-width: 650px; }
+
+.records-panel th {
+  padding: 15px 18px;
+  background: linear-gradient(90deg, #eff8f0, #f8fbf8);
+  color: #496653;
+  font-size: 10px;
+  letter-spacing: 0.78px;
+}
+
+.records-panel td {
+  padding: 17px 18px;
+  color: #234532;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.records-panel tbody tr { background: #ffffff; }
+.records-panel tbody tr:nth-child(even) { background: #f8fcf8; }
+
+.records-panel tbody tr:hover {
+  background: #eef9ef;
+  box-shadow: inset 3px 0 0 #5daa62;
+}
+
+.records-panel td:first-child > strong {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 9px;
+  border: 1px solid #d5ead8;
+  border-radius: 999px;
+  background: #edf8ee;
+  color: #075d35;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.records-panel td:first-child > small {
+  display: inline-block;
+  margin-top: 5px;
+  padding-left: 5px;
+  color: #637c6c;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.records-panel .name-cell .initial {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  box-shadow: 0 5px 12px rgba(3, 97, 51, 0.1);
+}
+
+.records-panel .name-cell strong {
+  color: #073d24;
+  font-size: 13px;
+}
+
+.records-panel .name-cell small {
+  margin-top: 3px;
+  color: #6b8474;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.records-panel .view-btn {
+  min-height: 42px;
+  padding: 8px 13px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ecf8ee, #dff2e3) !important;
+  box-shadow: 0 3px 8px rgba(3, 89, 46, 0.07);
+}
+
+.records-panel .view-btn:hover {
+  background: linear-gradient(135deg, #dff4e2, #ccebd2) !important;
+  box-shadow: 0 6px 13px rgba(3, 89, 46, 0.12);
+}
+
+.records-panel .row-actions { justify-content: flex-end; }
+
+.records-panel .table-footer {
+  margin: 15px 2px 0;
+  padding-top: 14px;
+  border-top: 1px solid #e4eee5;
+  color: #668070;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+@media (max-width: 700px) {
+  .records-panel table { min-width: 590px; }
+  .records-panel th, .records-panel td { padding: 13px 14px; }
+  .records-panel .view-btn { min-height: 42px; padding: 8px 11px; }
+}
