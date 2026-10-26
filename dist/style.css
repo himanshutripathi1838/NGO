@@ -4837,3 +4837,102 @@ dialog .actions {
   .records-panel th, .records-panel td { padding: 13px 14px; }
   .records-panel .view-btn { min-height: 42px; padding: 8px 11px; }
 }
+
+/* Responsive safety net: dashboard keeps its structure from small phones through laptops. */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .sidebar { width: 208px; padding: 20px 13px; }
+  .main { margin-left: 208px; }
+  .topbar { padding-inline: 24px; }
+  .content { padding: 24px clamp(18px, 2.5vw, 30px) 42px; }
+  .filters { align-items: flex-start; gap: 12px; }
+  .scope-label { max-width: 245px; text-align: right; }
+  .role-intro { gap: 16px; }
+  .role-hero { padding: 28px; }
+}
+
+@media (max-width: 1024px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .mobile-brand { display: flex; align-items: center; }
+  .mobile-tools {
+    display: flex;
+    position: sticky;
+    top: 74px;
+    z-index: 8;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 6px 12px;
+    background: #03291b;
+    box-shadow: 0 7px 16px rgba(3, 41, 27, .15);
+    scrollbar-width: none;
+  }
+  .mobile-tools::-webkit-scrollbar { display: none; }
+  .mobile-tools button {
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: var(--radius-xs);
+    background: transparent;
+    color: #d1ead7;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .mobile-tools button:hover,
+  .mobile-tools button.active {
+    background: #e7f5e8;
+    color: var(--forest);
+  }
+  .topbar { padding-inline: 22px; }
+  .content { padding: 22px 20px 42px; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .charts { grid-template-columns: 1fr; }
+  .profile-page-grid { grid-template-columns: 1fr; }
+  .profile-identity-card { max-width: none; }
+}
+
+@media (max-width: 720px) {
+  .topbar { gap: 10px; padding: 9px 16px; min-height: 64px; height: auto; }
+  .topbar-left { min-width: 0; gap: 8px; }
+  .topbar-left > span:last-child { display: none; }
+  .top-role { max-width: 145px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .header-actions { gap: 8px; }
+  .sync { display: none; }
+  .header-actions .secondary { min-height: 40px; padding: 8px 11px; }
+  .mobile-tools { top: 64px; padding: 7px 10px; scroll-padding-inline: 10px; }
+  .mobile-tools button { min-height: 40px; padding: 8px 12px; }
+  .content { padding: 18px 14px 36px; }
+  .role-intro { margin-bottom: 18px; }
+  .role-intro h1 { font-size: clamp(27px, 8vw, 35px); }
+  .role-intro p { font-size: 13px; }
+  .role-hero { min-height: auto; padding: 23px 20px; }
+  .role-hero .role-visual { display: none; }
+  .filters { gap: 11px; }
+  .filters-left { width: 100%; }
+  .scope-label { align-self: flex-start; }
+  .code-lookup { padding: 21px 18px; }
+  .code-lookup h2 { font-size: 18px; }
+  .records-panel { padding: 18px 14px; }
+  .records-panel .table-head { align-items: flex-start; gap: 13px; }
+  .records-panel .search { width: 100%; max-width: none; }
+}
+
+@media (max-width: 460px) {
+  .mobile-brand .brand-lockup { padding: 5px 8px; }
+  .mobile-brand .brand-lockup span { font-size: 12px; }
+  .top-role { display: none; }
+  .header-actions .secondary { font-size: 11px; padding-inline: 9px; }
+  .stats { grid-template-columns: 1fr; gap: 12px; }
+  .stat { min-height: 150px; }
+  .filters-left { display: grid; grid-template-columns: 1fr; gap: 9px; }
+  .filters-left::before { display: none; }
+  .custom-select-wrap, .filter-select-btn { width: 100%; min-width: 0; }
+  .network-counts span { width: 100%; }
+  .report-filterbar-left, .report-filterbar > div { grid-template-columns: 1fr; }
+  .report-head { gap: 14px; }
+  .report-head .primary { width: 100%; justify-content: center; }
+  .glance-grid, .report-metrics { grid-template-columns: 1fr; }
+  .profile-card, .profile-identity-card { padding: 18px 15px; }
+  dialog { width: calc(100vw - 20px); max-width: none; }
+}
