@@ -2951,6 +2951,7 @@ dialog .actions {
 .edit-pill-btn {
   display: inline-flex;
   align-items: center;
+  min-height: 42px;
   gap: 6px;
   padding: 7px 16px;
   border-radius: var(--radius-full);
