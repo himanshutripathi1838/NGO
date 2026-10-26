@@ -2238,6 +2238,16 @@ input[readonly] {
   white-space: nowrap;
 }
 
+/* Chart data may legitimately be wider than its card on desktop. Contain that
+   width inside the chart instead of allowing it to widen the entire page. */
+.bar-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+}
+
 .chart-foot {
   display: flex;
   align-items: center;
@@ -3630,6 +3640,31 @@ dialog .actions {
     gap: 8px;
   }
   .charts .plot { padding-inline: 6px; }
+  /* Farmer charts use a wider desktop minimum to keep every crop readable.
+     On phones, fit the chart to the card and allow crop names to wrap. */
+  .charts .bar-scroll .plot,
+  .charts .bar-scroll .chart-labels {
+    min-width: 100% !important;
+  }
+  .charts .bar-group { min-width: 0; }
+  .charts .chart-labels span {
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.2;
+  }
+  .charts .crop-breakdown > div {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+  .charts .crop-breakdown span,
+  .charts .crop-breakdown b {
+    min-width: 0;
+  }
+  .charts .crop-breakdown b {
+    white-space: nowrap;
+    font-size: 12px;
+  }
   dialog {
     padding: 22px 18px;
   }
