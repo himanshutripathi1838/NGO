@@ -69,5 +69,26 @@ function openCropRecordForm(){
   try{cropForm()}catch(error){message(error)}
 }
 document.addEventListener('click',event=>{let button=event.target.closest('[data-action="crop"]');if(!button||!state||!current)return;event.preventDefault();event.stopImmediatePropagation();openCropRecordForm()},true);
+function installMobileDrawer(){
+  let topbar=$('.topbar'),tools=$('.mobile-tools');
+  if(!topbar||!tools||$('#mobileNavToggle'))return;
+  tools.querySelectorAll('[data-nav]').forEach(button=>button.classList.toggle('active',button.dataset.nav===view));
+  tools.querySelector('[data-action="profile"]')?.classList.toggle('active',view==='profile');
+  let toggle=document.createElement('button'),scrim=$('#mobileNavScrim');
+  toggle.id='mobileNavToggle';
+  toggle.type='button';
+  toggle.className='mobile-nav-toggle';
+  toggle.setAttribute('aria-label','Open navigation menu');
+  toggle.setAttribute('aria-expanded','false');
+  toggle.innerHTML='<i></i><i></i><i></i>';
+  topbar.querySelector('.header-actions')?.before(toggle);
+  if(!scrim){scrim=document.createElement('button');scrim.id='mobileNavScrim';scrim.type='button';scrim.tabIndex=-1;scrim.setAttribute('aria-label','Close navigation menu');document.body.append(scrim)}
+  const close=()=>{tools.classList.remove('is-open');scrim.classList.remove('is-visible');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation menu')};
+  toggle.onclick=()=>{let open=!tools.classList.contains('is-open');tools.classList.toggle('is-open',open);scrim.classList.toggle('is-visible',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')};
+  scrim.onclick=close;
+  tools.addEventListener('click',close,true);
+}
+new MutationObserver(()=>setTimeout(installMobileDrawer,0)).observe($('#app'),{childList:true,subtree:true});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&$('.mobile-tools')?.classList.contains('is-open'))$('#mobileNavToggle')?.click()});
 boot();
 
