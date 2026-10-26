@@ -4930,6 +4930,85 @@ dialog .actions {
   font-weight: 650;
 }
 
+/* Overview records: one polished table treatment for every role. */
+.records-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #d6e8da;
+  box-shadow: 0 14px 32px rgba(2, 58, 31, 0.07);
+}
+
+.records-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, #087c46, #85c94f 54%, #d5ed9a);
+}
+
+.records-panel .table-head {
+  align-items: flex-start;
+  gap: 18px;
+  padding-top: 6px;
+}
+
+.records-panel .table-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: clamp(19px, 2vw, 22px);
+  letter-spacing: -0.45px;
+}
+
+.records-panel .table-head h2::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: #45af68;
+  box-shadow: 0 0 0 5px #e4f5e7;
+}
+
+.records-panel .table-head p { max-width: 560px; line-height: 1.55; }
+
+.records-panel .table-wrap {
+  max-width: 100%;
+  border: 1px solid #dcecdf;
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+.records-panel table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.records-panel th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid #dcecdf;
+}
+
+.records-panel td { border-bottom: 1px solid #edf3ee; }
+.records-panel tbody tr:last-child td { border-bottom: 0; }
+.records-panel tbody tr { transition: background-color 160ms ease, box-shadow 160ms ease; }
+
+.records-panel .table-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 4px 0;
+  font-size: 11px;
+}
+
+@media (max-width: 640px) {
+  .records-panel .table-head h2 { font-size: 19px; }
+  .records-panel .table-head h2::before { width: 8px; height: 8px; }
+  .records-panel .table-footer { flex-direction: column; gap: 4px; }
+}
+
 @media (max-width: 700px) {
   .records-panel table { min-width: 590px; }
   .records-panel th, .records-panel td { padding: 13px 14px; }
