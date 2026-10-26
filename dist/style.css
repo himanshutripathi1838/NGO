@@ -3874,9 +3874,7 @@ dialog .actions {
   }
 }
 
-.auth-layout,
-.sidebar,
-.main {
+.auth-layout {
   animation: contentFadeIn 0.25s ease-out forwards;
 }
 
