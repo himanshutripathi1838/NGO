@@ -4469,6 +4469,18 @@ dialog .actions {
   animation: none !important;
 }
 
+/* Keep the sidebar profile action distinct without the visual weight of pure white. */
+.sidebar .nav button.active {
+  background: linear-gradient(135deg, #f5fff7, #dcefe2) !important;
+  border-color: rgba(185, 236, 74, 0.78);
+  color: #06472a !important;
+}
+
+.sidebar .nav button.active svg {
+  color: #07854a;
+  filter: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav button:hover { transform: none; }
 }
