@@ -5092,13 +5092,13 @@ html, body { max-width: 100%; overflow-x: hidden; }
     white-space: nowrap;
   }
   .mobile-tools button:last-child { display: none; }
-  body.role-2 .mobile-tools button:nth-child(2),
-  body.role-3 .mobile-tools button:nth-child(2) { font-size: 0; }
-  body.role-2 .mobile-tools button:nth-child(2)::after {
+  body.role-2 .mobile-tools button[data-nav="network"],
+  body.role-3 .mobile-tools button[data-nav="network"] { font-size: 0; }
+  body.role-2 .mobile-tools button[data-nav="network"]::after {
     content: 'Field teams';
     font-size: 12px;
   }
-  body.role-3 .mobile-tools button:nth-child(2)::after {
+  body.role-3 .mobile-tools button[data-nav="network"]::after {
     content: 'My farmers';
     font-size: 12px;
   }
@@ -5114,8 +5114,8 @@ html, body { max-width: 100%; overflow-x: hidden; }
   .header-actions .secondary { min-height: 40px; padding: 8px 11px; }
   .mobile-tools { top: 64px; padding: 7px 10px; }
   .mobile-tools button { min-height: 42px; padding: 8px 5px; font-size: 11px; }
-  body.role-2 .mobile-tools button:nth-child(2)::after,
-  body.role-3 .mobile-tools button:nth-child(2)::after { font-size: 11px; }
+  body.role-2 .mobile-tools button[data-nav="network"]::after,
+  body.role-3 .mobile-tools button[data-nav="network"]::after { font-size: 11px; }
   .content { padding: 18px 14px 36px; }
   .role-intro { margin-bottom: 18px; }
   .role-intro h1 { font-size: clamp(27px, 8vw, 35px); }
@@ -5158,6 +5158,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
 #mobileNavScrim { display: none; }
 
 @media (max-width: 960px) {
+  body.nav-open { overflow: hidden; }
   .mobile-nav-toggle {
     display: inline-flex;
     width: 44px;
@@ -5184,7 +5185,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
     display: block;
     position: fixed;
     inset: 0;
-    z-index: 28;
+    z-index: 1000;
     border: 0;
     background: rgba(1, 32, 20, 0.48);
     backdrop-filter: blur(2px);
@@ -5192,32 +5193,50 @@ html, body { max-width: 100%; overflow-x: hidden; }
   .mobile-tools {
     position: fixed;
     inset: 0 auto 0 0;
-    z-index: 29;
+    z-index: 1001;
     display: flex !important;
-    width: min(300px, 84vw);
+    width: min(320px, 84vw);
     height: 100dvh;
     grid-template-columns: none;
     flex-direction: column;
     align-items: stretch;
     gap: 7px;
     overflow-y: auto;
-    padding: max(24px, env(safe-area-inset-top)) 14px 24px;
+    padding: max(18px, env(safe-area-inset-top)) 14px 24px;
     background:
       radial-gradient(circle at 105% 5%, rgba(186, 239, 104, 0.2), transparent 27%),
       linear-gradient(160deg, #062c27, #06483d 52%, #052c25);
     box-shadow: 14px 0 34px rgba(1, 31, 20, 0.3);
+    border-right: 1px solid rgba(213, 250, 225, 0.16);
+    border-radius: 0 24px 24px 0;
     transform: translateX(-105%);
     transition: transform 220ms ease;
   }
   .mobile-tools.is-open { transform: translateX(0); }
-  .mobile-tools::before {
-    content: 'Navigation';
-    margin: 2px 8px 14px;
+  .mobile-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px 4px 14px;
     color: #d7f8a4;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 850;
-    letter-spacing: 1.7px;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
+  }
+  .mobile-drawer-head button {
+    display: inline-grid !important;
+    width: 40px;
+    min-height: 40px !important;
+    place-items: center;
+    padding: 0 !important;
+    border: 1px solid rgba(219, 251, 227, 0.2) !important;
+    border-radius: 11px !important;
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    font-size: 26px !important;
+    font-weight: 400 !important;
+    line-height: 1;
   }
   .mobile-tools button,
   .mobile-tools button:last-child {
@@ -5246,8 +5265,8 @@ html, body { max-width: 100%; overflow-x: hidden; }
     background: linear-gradient(135deg, #dff7a1, #b7e96c);
     color: #06472d;
   }
-  body.role-2 .mobile-tools button:nth-child(2)::after,
-  body.role-3 .mobile-tools button:nth-child(2)::after { font-size: 14px; }
+  body.role-2 .mobile-tools button[data-nav="network"]::after,
+  body.role-3 .mobile-tools button[data-nav="network"]::after { font-size: 14px; }
 }
 
 @media (max-width: 640px) {

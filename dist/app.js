@@ -83,8 +83,13 @@ function installMobileDrawer(){
   toggle.innerHTML='<i></i><i></i><i></i>';
   topbar.querySelector('.header-actions')?.before(toggle);
   if(!scrim){scrim=document.createElement('button');scrim.id='mobileNavScrim';scrim.type='button';scrim.tabIndex=-1;scrim.setAttribute('aria-label','Close navigation menu');document.body.append(scrim)}
-  const close=()=>{tools.classList.remove('is-open');scrim.classList.remove('is-visible');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation menu')};
-  toggle.onclick=()=>{let open=!tools.classList.contains('is-open');tools.classList.toggle('is-open',open);scrim.classList.toggle('is-visible',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')};
+  let drawerHead=document.createElement('div');
+  drawerHead.className='mobile-drawer-head';
+  drawerHead.innerHTML='<span>Menu</span><button type="button" aria-label="Close navigation menu">×</button>';
+  tools.prepend(drawerHead);
+  const close=()=>{tools.classList.remove('is-open');scrim.classList.remove('is-visible');document.body.classList.remove('nav-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation menu')};
+  toggle.onclick=()=>{let open=!tools.classList.contains('is-open');tools.classList.toggle('is-open',open);scrim.classList.toggle('is-visible',open);document.body.classList.toggle('nav-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')};
+  drawerHead.querySelector('button').onclick=close;
   scrim.onclick=close;
   tools.addEventListener('click',close,true);
 }
