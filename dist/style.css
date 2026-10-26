@@ -2111,12 +2111,15 @@ input[readonly] {
 
 .charts {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   gap: 24px;
   margin-bottom: 28px;
 }
 
 .panel {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -3600,6 +3603,33 @@ dialog .actions {
   .glance-grid, .report-metrics {
     grid-template-columns: 1fr;
   }
+  .charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .charts .panel {
+    padding: 18px;
+  }
+  .charts .panel-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .charts .tabs {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .charts .tabs::-webkit-scrollbar { display: none; }
+  .charts .tabs button {
+    flex: 1 0 auto;
+    padding-inline: 10px;
+  }
+  .charts .plot,
+  .charts .chart-labels {
+    gap: 8px;
+  }
+  .charts .plot { padding-inline: 6px; }
   dialog {
     padding: 22px 18px;
   }
